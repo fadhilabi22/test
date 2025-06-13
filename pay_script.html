@@ -117,7 +117,7 @@
 
                     
                     <div>
-                        <label for="promoCode" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="discount" class="block text-sm font-medium text-gray-700 mb-2">
                             Kode Promo (Opsional)
                         </label>
                         <div class="flex gap-2">
@@ -281,6 +281,13 @@
             'ewallet': 'E-Wallet',
             'credit': 'Kartu Kredit',
             'cash': 'Bayar Tunai'
+        };
+        // diskon
+        const discount = {
+            'DISKONWOY': {discount: 5, type: 'percentage', description: 'diskon 5%'},
+            'ANJAYDISKON':{discount:15, type:'percentage', description:'diskon 10%'},
+            'DISKON':{discount:20, type:'percentage', description:'diskon 20%'},
+            '0232':{discount:25 , type:'percentage', description:'diskon 25%'}
         };
 
         // ===== MENDAPATKAN ELEMEN DOM =====
