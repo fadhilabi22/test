@@ -9,8 +9,9 @@
         tailwind.config = {
             darkMode: 'class',
         }
-        </script>
+    </script>
     <script>
+      // Initialize dark mode based on localStorage or system preference
       if (localStorage.theme === 'dark' ||
           (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -19,35 +20,35 @@
       }
     </script>
 </head>
-<body class="bg-red-100 to-indigo-100 min-h-screen py-8">
+<body class="bg-red-100 dark:bg-gray-900 to-indigo-100 min-h-screen py-8 transition-colors duration-300">
     <div class="fixed top-4 right-4 z-50">
-    <button id="toggleDarkMode" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-lg shadow transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-600">
-      🌙 Dark Mode
-    </button>
-  </div>
+        <button id="toggleDarkMode" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-lg shadow transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 flex items-center gap-2">
+            <span id="modeIcon">🌙</span>
+            <span id="modeText">Dark Mode</span>
+        </button>
+    </div>
+    
     <div class="container mx-auto max-w-7xl px-4">
-        <div class="items-center mb-8 ">
-        <!-- Header -->
-        <div class="text-center  mb-8">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">Sistem Pembayaran Coffee</h1>
-            <p class="text-gray-600">Kelola transaksi dan pembayaran dengan mudah</p>
+        <div class="items-center mb-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2 transition-colors duration-300">Sistem Pembayaran Coffee</h1>
+                <p class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Kelola transaksi dan pembayaran dengan mudah</p>
+            </div>
+            <img src="global_institute.png" class="absolute top-0 left-0 w-32 h-auto mb-4 opacity-80 dark:opacity-60 transition-opacity duration-300">
         </div>
-        <img src="global_institute.png" class="absolute top-0 left-0 w-32 h-auto  mb-4">
-        </div>
+        
         <div class="grid lg:grid-cols-2 gap-8">
-            <!-- Form Pembayaran -->
-            <div class="bg-blue-100 rounded-xl shadow-lg p-6">
+            <div class="bg-blue-100 dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-all duration-300">
                 <div class="flex items-center mb-6">
-                    <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-blue-600 dark:text-blue-400 mr-2 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
                     </svg>
-                    <h2 class="text-xl font-semibold text-gray-800">Form Pembayaran</h2>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white transition-colors duration-300">Form Pembayaran</h2>
                 </div>
 
                 <form id="paymentForm" class="space-y-4">
-                    <!-- Nama Pelanggan -->
                     <div>
-                        <label for="customerName" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="customerName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                             Nama Pelanggan
                         </label>
                         <input 
@@ -55,14 +56,13 @@
                             id="customerName"
                             name="customerName"
                             placeholder="Masukkan nama pelanggan"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-300"
                             required
                         >
                     </div>
 
-                    <!-- Email -->
                     <div>
-                        <label for="customerEmail" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="customerEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                             Email
                         </label>
                         <input 
@@ -70,33 +70,31 @@
                             id="customerEmail"
                             name="customerEmail"
                             placeholder="contoh@email.com"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-300"
                             required
                         >
                     </div>
 
-                    <!-- Produk/Layanan -->
                     <div>
-                        <label for="productSelect" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="productSelect" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                             Pilih Produk/Layanan
                         </label>
                         <select 
                             id="productSelect"
                             name="product"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
                             required
                         >
                             <option value="">Pilih produk...</option>
                             <option value="basic" data-price="10000">Susu - Rp 10.000</option>
                             <option value="premium" data-price="15000">Kopi+Susu - Rp 15.000</option>
                             <option value="professional" data-price="19000">Americano - Rp 19.000</option>
-                            <option value="enterprise" data-price="25000">Coffe Latte - Rp 25.000</option>
+                            <option value="enterprise" data-price="25000">Coffee Latte - Rp 25.000</option>
                         </select>
                     </div>
 
-                    <!-- Jumlah -->
                     <div>
-                        <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="quantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                             Jumlah
                         </label>
                         <input 
@@ -105,39 +103,37 @@
                             name="quantity"
                             min="1"
                             value="1"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
                             required
                         >
                     </div>
 
-                    <!-- Metode Pembayaran -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                             Metode Pembayaran
                         </label>
                         <div class="space-y-2">
                             <label class="flex items-center">
-                                <input type="radio" name="paymentMethod" value="transfer" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-sm text-gray-700">Transfer Bank</span>
+                                <input type="radio" name="paymentMethod" value="transfer" class="text-blue-600 focus:ring-blue-500 dark:text-blue-400 dark:focus:ring-blue-400">
+                                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300 transition-colors duration-300">Transfer Bank</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="radio" name="paymentMethod" value="ewallet" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-sm text-gray-700">E-Wallet (OVO, GoPay, Dana)</span>
+                                <input type="radio" name="paymentMethod" value="ewallet" class="text-blue-600 focus:ring-blue-500 dark:text-blue-400 dark:focus:ring-blue-400">
+                                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300 transition-colors duration-300">E-Wallet (OVO, GoPay, Dana)</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="radio" name="paymentMethod" value="credit" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-sm text-gray-700">Kartu Kredit</span>
+                                <input type="radio" name="paymentMethod" value="credit" class="text-blue-600 focus:ring-blue-500 dark:text-blue-400 dark:focus:ring-blue-400">
+                                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300 transition-colors duration-300">Kartu Kredit</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="radio" name="paymentMethod" value="cash" class="text-blue-600 focus:ring-blue-500">
-                                <span class="ml-2 text-sm text-gray-700">Bayar Tunai</span>
+                                <input type="radio" name="paymentMethod" value="cash" class="text-blue-600 focus:ring-blue-500 dark:text-blue-400 dark:focus:ring-blue-400">
+                                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300 transition-colors duration-300">Bayar Tunai</span>
                             </label>
                         </div>
                     </div>
 
-                    
                     <div>
-                        <label for="promoCodes" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="promoCodes" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                             Kode Promo (Opsional)
                         </label>
                         <div class="flex gap-2">
@@ -146,83 +142,77 @@
                                 id="promoCode"
                                 name="promoCode"
                                 placeholder="Masukkan kode promo"
-                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-300"
                             >
                             <button 
                                 type="button" 
                                 id="applyPromoBtn"
-                                class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200"
+                                class="px-4 py-2 bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
                             >
                                 Terapkan
                             </button>
                         </div>
-                        <div id="promoMessage" class="mt-2 text-sm hidden"></div>
+                        <div id="promoMessage" class="mt-2 text-sm hidden transition-colors duration-300"></div>
                     </div>
 
-                    <!-- Total -->
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-all duration-300">
+                        <div class="flex justify-between items-center text-sm text-gray-600 dark:text-gray-300 mb-2 transition-colors duration-300">
                             <span>Subtotal:</span>
                             <span id="subtotal">Rp 0</span>
                         </div>
-                        <div id="discountRow" class="flex justify-between items-center text-sm text-green-600 mb-2 hidden">
+                        <div id="discountRow" class="flex justify-between items-center text-sm text-green-600 dark:text-green-400 mb-2 hidden transition-colors duration-300">
                             <span>Diskon:</span>
                             <span id="discount">Rp 0</span>
                         </div>
-                        <div class="flex justify-between items-center text-lg font-semibold text-gray-800 border-t pt-2">
+                        <div class="flex justify-between items-center text-lg font-semibold text-gray-800 dark:text-white border-t pt-2 transition-colors duration-300">
                             <span>Total:</span>
                             <span id="totalAmount">Rp 0</span>
                         </div>
                     </div>
 
-                    <!-- Submit Button -->
                     <button 
                         type="submit"
-                        class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
+                        class="w-full py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 transform hover:scale-105"
                     >
                         Proses Pembayaran
                     </button>
                 </form>
             </div>
 
-            <!-- Riwayat Transaksi -->
-            <div class="bg-blue-100 rounded-xl shadow-lg p-6">
+            <div class="bg-blue-100 dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-all duration-300">
                 <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center">
-                        <svg class="w-10 h-10 text-green-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 text-green-700 dark:text-green-400 mr-2 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
-                        <h2 class="text-xl font-semibold text-gray-800">Riwayat Transaksi</h2>
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-white transition-colors duration-300">Riwayat Transaksi</h2>
                     </div>
                     <button 
                         id="clearHistoryBtn"
-                        class="px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-200 hidden"
+                        class="px-4 py-2 text-sm bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 hidden"
                     >
                         Hapus Semua
                     </button>
                 </div>
 
-                <!-- Statistics -->
                 <div class="grid grid-cols-3 gap-4 mb-6">
-                    <div class="text-center p-3 bg-blue-50 rounded-xl">
-                        <div class="text-2xl font-bold text-blue-600" id="totalTransactions">0</div>
-                        <div class="text-sm text-gray-600">Transaksi</div>
+                    <div class="text-center p-3 bg-blue-50 dark:bg-gray-700 rounded-xl transition-all duration-300">
+                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300" id="totalTransactions">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">Transaksi</div>
                     </div>
-                    <div class="text-center p-3 bg-green-50 rounded-lg">
-                        <div class="text-2xl font-bold text-green-600" id="totalRevenue">Rp 0</div>
-                        <div class="text-sm text-gray-600">Pendapatan</div>
+                    <div class="text-center p-3 bg-green-50 dark:bg-gray-700 rounded-lg transition-all duration-300">
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400 transition-colors duration-300" id="totalRevenue">Rp 0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">Pendapatan</div>
                     </div>
-                    <div class="text-center p-3 bg-purple-50 rounded-lg">
-                        <div class="text-2xl font-bold text-purple-600" id="avgTransaction">Rp 0</div>
-                        <div class="text-sm text-gray-600">Rata-rata</div>
+                    <div class="text-center p-3 bg-purple-50 dark:bg-gray-700 rounded-lg transition-all duration-300">
+                        <div class="text-2xl font-bold text-purple-600 dark:text-purple-400 transition-colors duration-300" id="avgTransaction">Rp 0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">Rata-rata</div>
                     </div>
                 </div>
 
-                <!-- Transaction List -->
                 <div id="transactionList" class="space-y-3 max-h-96 overflow-y-auto">
-                    <!-- Empty State -->
-                    <div id="emptyState" class="text-center py-8 text-gray-500">
-                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div id="emptyState" class="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300 dark:text-gray-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                         <p class="font-medium">Belum ada transaksi</p>
@@ -233,51 +223,84 @@
         </div>
     </div>
 
-    <!-- Modal Konfirmasi Pembayaran -->
-    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 hidden items-center justify-center z-50 transition-all duration-300">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-md w-full mx-4 transition-all duration-300 transform scale-95 modal-enter">
             <div class="text-center mb-4">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300">
+                    <svg class="w-8 h-8 text-green-600 dark:text-green-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Pembayaran Berhasil!</h3>
-                <p class="text-gray-600">Transaksi Anda telah diproses</p>
+                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2 transition-colors duration-300">Pembayaran Berhasil!</h3>
+                <p class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Transaksi Anda telah diproses</p>
             </div>
             
-            <div id="paymentDetails" class="bg-gray-50 rounded-lg p-4 mb-4 text-sm">
-                <!-- Detail pembayaran akan ditampilkan di sini -->
-            </div>
+            <div id="paymentDetails" class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4 text-sm transition-all duration-300">
+                </div>
             
             <button 
                 id="closeModalBtn"
-                class="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
+                class="w-full py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 transform hover:scale-105"
             >
                 Tutup
             </button>
         </div>
     </div>
 
-    <!-- Template untuk Transaction Item -->
     <template id="transactionTemplate">
-        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+        <div class="border border-gray-200 dark:border-gray-600 rounded-lg p-4 hover:shadow-md dark:hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-700">
             <div class="flex justify-between items-start mb-2">
                 <div>
-                    <h4 class="font-medium text-gray-800 transaction-customer"></h4>
-                    <p class="text-sm text-gray-600 transaction-product"></p>
+                    <h4 class="font-medium text-gray-800 dark:text-white transaction-customer transition-colors duration-300"></h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 transaction-product transition-colors duration-300"></p>
                 </div>
                 <div class="text-right">
-                    <div class="font-semibold text-green-600 transaction-amount"></div>
-                    <div class="text-xs text-gray-500 transaction-time"></div>
+                    <div class="font-semibold text-green-600 dark:text-green-400 transaction-amount transition-colors duration-300"></div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 transaction-time transition-colors duration-300"></div>
                 </div>
             </div>
             <div class="flex justify-between items-center text-sm">
-                <span class="transaction-method px-2 py-1 rounded-full text-xs"></span>
-                <span class="transaction-status px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Berhasil</span>
+                <span class="transaction-method px-2 py-1 rounded-full text-xs transition-colors duration-300"></span>
+                <span class="transaction-status px-2 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 transition-colors duration-300">Berhasil</span>
             </div>
         </div>
     </template>
+
+    <style>
+        .modal-enter {
+            animation: modalEnter 0.3s ease-out;
+        }
+        
+        @keyframes modalEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        /* Custom scrollbar for dark mode */
+        .dark ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: rgb(55, 65, 81); /* gray-700 */
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgb(107, 114, 128); /* gray-500 */
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: rgb(156, 163, 175); /* gray-400 */
+        }
+    </style>
 
     <script>
         // ===== DATA & VARIABEL GLOBAL =====
@@ -286,13 +309,12 @@
         let currentDiscount = 0;
         let appliedPromoCode = '';
 
-
-        // Mapping metode pembayaran dengan warna
+        // Mapping metode pembayaran dengan warna (dark mode compatible)
         const paymentMethodColors = {
-            'transfer': 'bg-blue-100 text-blue-800',
-            'ewallet': 'bg-purple-100 text-purple-800',
-            'credit': 'bg-orange-100 text-orange-800',
-            'cash': 'bg-green-100 text-green-800'
+            'transfer': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+            'ewallet': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+            'credit': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+            'cash': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
         };
 
         // Mapping nama metode pembayaran
@@ -302,13 +324,39 @@
             'credit': 'Kartu Kredit',
             'cash': 'Bayar Tunai'
         };
-        // diskon
+
+        // Kode promo
         const promoCodes = {
             'DISKONWOY': {discount: 5, type: 'percentage', description: 'diskon 5%'},
-            'ANJAYDISKON':{discount:15, type:'percentage', description:'diskon 10%'},
-            'DISKON':{discount:20, type:'percentage', description:'diskon 20%'},
-            '0232':{discount:25 , type:'percentage', description:'diskon 25%'}
+            'ANJAYDISKON': {discount: 15, type: 'percentage', description: 'diskon 15%'}, // Corrected description
+            'DISKON': {discount: 20, type: 'percentage', description: 'diskon 20%'},
+            '0232': {discount: 25, type: 'percentage', description: 'diskon 25%'}
         };
+
+        // ===== DARK MODE FUNCTIONALITY =====
+        const toggleDarkMode = document.getElementById('toggleDarkMode');
+        const modeIcon = document.getElementById('modeIcon');
+        const modeText = document.getElementById('modeText');
+
+        function updateDarkModeButton() {
+            const isDark = document.documentElement.classList.contains('dark');
+            modeIcon.textContent = isDark ? '☀️' : '🌙';
+            modeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+
+        toggleDarkMode.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            updateDarkModeButton();
+        });
 
         // ===== MENDAPATKAN ELEMEN DOM =====
         const paymentForm = document.getElementById('paymentForm');
@@ -432,15 +480,19 @@
             promoCode.disabled = true;
             applyPromoBtn.textContent = 'Diterapkan';
             applyPromoBtn.disabled = true;
-            applyPromoBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
-            applyPromoBtn.classList.add('bg-gray-400');
+            applyPromoBtn.classList.remove('bg-green-500', 'hover:bg-green-600', 'dark:bg-green-600', 'dark:hover:bg-green-700');
+            applyPromoBtn.classList.add('bg-gray-400', 'dark:bg-gray-600');
         }
 
         // Tampilkan pesan promo
         function showPromoMessage(message, type) {
             promoMessage.textContent = message;
-            promoMessage.classList.remove('hidden', 'text-red-500', 'text-green-500');
-            promoMessage.classList.add(type === 'error' ? 'text-red-500' : 'text-green-500');
+            promoMessage.classList.remove('hidden', 'text-red-500', 'text-green-500', 'dark:text-red-400', 'dark:text-green-400');
+            if (type === 'error') {
+                promoMessage.classList.add('text-red-500', 'dark:text-red-400');
+            } else {
+                promoMessage.classList.add('text-green-500', 'dark:text-green-400');
+            }
         }
 
         // Reset promo code
@@ -451,256 +503,181 @@
             promoCode.disabled = false;
             applyPromoBtn.textContent = 'Terapkan';
             applyPromoBtn.disabled = false;
-            applyPromoBtn.classList.remove('bg-gray-400');
-            applyPromoBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+            applyPromoBtn.classList.remove('bg-gray-400', 'dark:bg-gray-600');
+            applyPromoBtn.classList.add('bg-green-500', 'hover:bg-green-600', 'dark:bg-green-600', 'dark:hover:bg-green-700');
             promoMessage.classList.add('hidden');
             updateTotal();
         }
 
-        // ===== FUNGSI TRANSAKSI =====
-        
-        // Proses pembayaran
-        function processPayment(formData) {
-            const selectedOption = productSelect.options[productSelect.selectedIndex];
-            const subtotal = calculateSubtotal();
-            const total = subtotal - currentDiscount;
-
-            const transaction = {
-                id: generateTransactionId(),
-                customerName: formData.get('customerName'),
-                customerEmail: formData.get('customerEmail'),
-                product: selectedOption.textContent,
-                productValue: selectedOption.value,
-                quantity: parseInt(formData.get('quantity')),
-                paymentMethod: formData.get('paymentMethod'),
-                promoCode: appliedPromoCode,
-                subtotal: subtotal,
-                discount: currentDiscount,
-                total: total,
-                timestamp: new Date(),
-                time: getCurrentTime(),
-                status: 'success'
-            };
-
-            transactions.push(transaction);
-            return transaction;
-        }
-
-        // Tampilkan modal konfirmasi
-        function showPaymentModal(transaction) {
-            paymentDetails.innerHTML = `
-                <div class="space-y-2">
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">ID Transaksi:</span>
-                        <span class="font-medium">${transaction.id}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Nama:</span>
-                        <span class="font-medium">${transaction.customerName}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Produk:</span>
-                        <span class="font-medium">${transaction.product}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Jumlah:</span>
-                        <span class="font-medium">${transaction.quantity}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Metode:</span>
-                        <span class="font-medium">${paymentMethodNames[transaction.paymentMethod]}</span>
-                    </div>
-                    ${transaction.discount > 0 ? `
-                    <div class="flex justify-between text-green-600">
-                        <span>Diskon:</span>
-                        <span class="font-medium">-${formatCurrency(transaction.discount)}</span>
-                    </div>
-                    ` : ''}
-                    <hr class="my-2">
-                    <div class="flex justify-between text-lg font-semibold">
-                        <span>Total:</span>
-                        <span class="text-green-600">${formatCurrency(transaction.total)}</span>
-                    </div>
-                </div>
-            `;
-            
-            paymentModal.classList.remove('hidden');
-            paymentModal.classList.add('flex');
-        }
-
-        // Tutup modal
-        function closeModal() {
-            paymentModal.classList.add('hidden');
-            paymentModal.classList.remove('flex');
-        }
-
         // ===== FUNGSI RIWAYAT TRANSAKSI =====
-        
-        // Buat elemen transaksi
-        function createTransactionElement(transaction) {
-            const template = document.getElementById('transactionTemplate');
-            const clone = template.content.cloneNode(true);
-            
-            clone.querySelector('.transaction-customer').textContent = transaction.customerName;
-            clone.querySelector('.transaction-product').textContent = `${transaction.product} (${transaction.quantity}x)`;
-            clone.querySelector('.transaction-amount').textContent = formatCurrency(transaction.total);
-            clone.querySelector('.transaction-time').textContent = transaction.time;
-            
-            const methodEl = clone.querySelector('.transaction-method');
-            methodEl.textContent = paymentMethodNames[transaction.paymentMethod];
-            methodEl.className += ' ' + paymentMethodColors[transaction.paymentMethod];
-            
-            return clone;
+
+        // Muat transaksi dari Local Storage
+        function loadTransactions() {
+            const storedTransactions = localStorage.getItem('transactions');
+            if (storedTransactions) {
+                transactions = JSON.parse(storedTransactions);
+                if (transactions.length > 0) {
+                    // Pastikan transactionIdCounter lebih besar dari ID transaksi terakhir
+                    const lastTransactionIdNum = Math.max(...transactions.map(t => parseInt(t.id.replace('TRX', '').substring(0, 8)) || 0));
+                    transactionIdCounter = lastTransactionIdNum + 1;
+                }
+            }
+            renderTransactions();
+            updateStatistics();
         }
 
-        // Render daftar transaksi
+        // Simpan transaksi ke Local Storage
+        function saveTransactions() {
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+        }
+
+        // Render (tampilkan) daftar transaksi
         function renderTransactions() {
-            // Hapus semua transaksi dari DOM
-            const transactionItems = transactionList.querySelectorAll('[data-transaction-id]');
-            transactionItems.forEach(item => item.remove());
-
+            transactionList.innerHTML = ''; // Kosongkan daftar sebelum render ulang
             if (transactions.length === 0) {
-                emptyState.style.display = 'block';
+                emptyState.classList.remove('hidden');
                 clearHistoryBtn.classList.add('hidden');
+                return;
             } else {
-                emptyState.style.display = 'none';
+                emptyState.classList.add('hidden');
                 clearHistoryBtn.classList.remove('hidden');
-
-                // Tampilkan transaksi terbaru di atas
-                const sortedTransactions = [...transactions].reverse();
-                sortedTransactions.forEach(transaction => {
-                    const transactionElement = createTransactionElement(transaction);
-                    // Tambahkan ID untuk referensi
-                    const container = transactionElement.querySelector('div');
-                    container.setAttribute('data-transaction-id', transaction.id);
-                    transactionList.appendChild(transactionElement);
-                });
             }
 
-            updateStatistics();
+            const template = document.getElementById('transactionTemplate');
+
+            transactions.forEach(transaction => {
+                const clone = document.importNode(template.content, true);
+                clone.querySelector('.transaction-customer').textContent = transaction.customerName;
+                clone.querySelector('.transaction-product').textContent = `${transaction.productName} (${transaction.quantity}x)`;
+                clone.querySelector('.transaction-amount').textContent = formatCurrency(transaction.totalAmount);
+                clone.querySelector('.transaction-time').textContent = transaction.timestamp;
+                
+                const methodSpan = clone.querySelector('.transaction-method');
+                methodSpan.textContent = paymentMethodNames[transaction.paymentMethod];
+                methodSpan.className += ` ${paymentMethodColors[transaction.paymentMethod]}`;
+
+                transactionList.prepend(clone); // Tambahkan ke paling atas
+            });
         }
 
         // Update statistik
         function updateStatistics() {
-            const totalTrans = transactions.length;
-            const totalRev = transactions.reduce((sum, t) => sum + t.total, 0);
-            const avgTrans = totalTrans > 0 ? totalRev / totalTrans : 0;
+            const totalTransactions = transactions.length;
+            const totalRevenue = transactions.reduce((sum, t) => sum + t.totalAmount, 0);
+            const avgTransaction = totalTransactions > 0 ? totalRevenue / totalTransactions : 0;
 
-            totalTransactionsEl.textContent = totalTrans;
-            totalRevenueEl.textContent = formatCurrency(totalRev);
-            avgTransactionEl.textContent = formatCurrency(avgTrans);
+            totalTransactionsEl.textContent = totalTransactions;
+            totalRevenueEl.textContent = formatCurrency(totalRevenue);
+            avgTransactionEl.textContent = formatCurrency(avgTransaction);
         }
 
-        // Hapus semua riwayat
-        function clearAllHistory() {
-            if (transactions.length === 0) return;
-            
-            if (confirm('Apakah Anda yakin ingin menghapus semua riwayat transaksi?')) {
+        // Hapus semua transaksi
+        clearHistoryBtn.addEventListener('click', () => {
+            if (confirm('Anda yakin ingin menghapus semua riwayat transaksi?')) {
                 transactions = [];
+                saveTransactions();
                 renderTransactions();
+                updateStatistics();
             }
-        }
-
-        // Reset form
-        function resetForm() {
-            paymentForm.reset();
-            resetPromoCode();
-            updateTotal();
-        }
+        });
 
         // ===== EVENT LISTENERS =====
-        
-        // Form submission
-        paymentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(paymentForm);
-            
-            // Validasi metode pembayaran
-            if (!formData.get('paymentMethod')) {
-                alert('Silakan pilih metode pembayaran');
-                return;
-            }
 
-            // Validasi total > 0
-            const total = calculateSubtotal() - currentDiscount;
-            if (total <= 0) {
-                alert('Total pembayaran harus lebih dari 0');
-                return;
-            }
-
-            try {
-                const transaction = processPayment(formData);
-                showPaymentModal(transaction);
-                renderTransactions();
-                resetForm();
-            } catch (error) {
-                alert('Terjadi kesalahan saat memproses pembayaran');
-                console.error('Payment error:', error);
-            }
-        });
-
-        // Product select dan quantity change
+        // Update total saat produk atau jumlah berubah
         productSelect.addEventListener('change', updateTotal);
         quantity.addEventListener('input', updateTotal);
-
-        // Promo code
         applyPromoBtn.addEventListener('click', applyPromoCode);
-        promoCode.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                applyPromoCode();
+        promoCode.addEventListener('input', () => {
+            // Reset promo jika input berubah setelah diterapkan
+            if (promoCode.disabled && promoCode.value.toUpperCase() !== appliedPromoCode) {
+                resetPromoCode();
+            } else if (!promoCode.value.trim()) {
+                // Sembunyikan pesan jika input kosong
+                promoMessage.classList.add('hidden');
             }
         });
 
-        // Modal controls
-        closeModalBtn.addEventListener('click', closeModal);
-        paymentModal.addEventListener('click', function(e) {
-            if (e.target === paymentModal) {
-                closeModal();
+
+        // Handle form submission
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Mencegah reload halaman
+
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerEmail = document.getElementById('customerEmail').value.trim();
+            const selectedProductOption = productSelect.options[productSelect.selectedIndex];
+            const productName = selectedProductOption.textContent.split(' - ')[0]; // Ambil nama produk saja
+            const productPrice = parseInt(selectedProductOption.dataset.price);
+            const qty = parseInt(quantity.value);
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+            const subtotal = calculateSubtotal();
+            const discount = currentDiscount;
+            const totalAmount = subtotal - discount;
+
+            // Validasi sederhana
+            if (!customerName || !customerEmail || !productName || !qty || !paymentMethod) {
+                alert('Harap lengkapi semua bidang yang wajib diisi.');
+                return;
             }
+
+            const newTransaction = {
+                id: generateTransactionId(),
+                customerName,
+                customerEmail,
+                productName,
+                quantity: qty,
+                unitPrice: productPrice,
+                subtotal,
+                discount,
+                totalAmount,
+                paymentMethod,
+                promoCode: appliedPromoCode || 'Tidak Ada',
+                timestamp: getCurrentTime()
+            };
+
+            transactions.push(newTransaction);
+            saveTransactions();
+            renderTransactions();
+            updateStatistics();
+            
+            // Tampilkan modal konfirmasi
+            showPaymentConfirmation(newTransaction);
+
+            // Reset form
+            paymentForm.reset();
+            resetPromoCode();
+            updateTotal(); // Update total setelah reset form
         });
 
-        // Clear history
-        clearHistoryBtn.addEventListener('click', clearAllHistory);
+        // Tampilkan modal konfirmasi pembayaran
+        function showPaymentConfirmation(transaction) {
+            paymentDetails.innerHTML = `
+                <p class="flex justify-between"><span>ID Transaksi:</span> <strong>${transaction.id}</strong></p>
+                <p class="flex justify-between"><span>Nama Pelanggan:</span> <span>${transaction.customerName}</span></p>
+                <p class="flex justify-between"><span>Email:</span> <span>${transaction.customerEmail}</span></p>
+                <p class="flex justify-between"><span>Produk:</span> <span>${transaction.productName} (${transaction.quantity}x)</span></p>
+                <p class="flex justify-between"><span>Harga Satuan:</span> <span>${formatCurrency(transaction.unitPrice)}</span></p>
+                <p class="flex justify-between"><span>Subtotal:</span> <span>${formatCurrency(transaction.subtotal)}</span></p>
+                <p class="flex justify-between"><span>Diskon:</span> <span>-${formatCurrency(transaction.discount)}</span></p>
+                <p class="flex justify-between"><span>Metode Pembayaran:</span> <span>${paymentMethodNames[transaction.paymentMethod]}</span></p>
+                <p class="flex justify-between text-lg font-semibold border-t pt-2 mt-2"><span>Total Dibayar:</span> <span>${formatCurrency(transaction.totalAmount)}</span></p>
+                <p class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-2"><span>Waktu Transaksi:</span> <span>${transaction.timestamp}</span></p>
+            `;
+            paymentModal.classList.remove('hidden');
+            paymentModal.classList.add('flex');
+        }
 
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !paymentModal.classList.contains('hidden')) {
-                closeModal();
-            }
+        // Tutup modal konfirmasi pembayaran
+        closeModalBtn.addEventListener('click', () => {
+            paymentModal.classList.add('hidden');
+            paymentModal.classList.remove('flex');
         });
 
         // ===== INISIALISASI =====
-        
-        // Initialize app
-        function initApp() {
-            updateTotal();
-            renderTransactions();
-            
-            // Focus ke input nama saat halaman dimuat
-            document.getElementById('customerName').focus();
-        }
-    // darkmode
-    const toggleDarkMode = document.getElementById('toggleDarkMode');
-    toggleDarkMode.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      if (document.documentElement.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        toggleDarkMode.textContent = '☀️ Light Mode';
-      } else {
-        localStorage.setItem('theme', 'light');
-        toggleDarkMode.textContent = '🌙 Dark Mode';
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      toggleDarkMode.textContent = document.documentElement.classList.contains('dark')
-        ? '☀️ Light Mode'
-        : '🌙 Dark Mode';
-    });
-        // Jalankan saat DOM siap
-        document.addEventListener('DOMContentLoaded', initApp);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDarkModeButton(); // Atur tombol dark mode saat halaman dimuat
+            loadTransactions(); // Muat transaksi yang ada
+            updateTotal(); // Hitung total awal
+        });
     </script>
 </body>
 </html>
