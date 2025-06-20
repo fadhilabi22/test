@@ -6,6 +6,11 @@
     <title>Sistem Pembayaran Lengkap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+        </script>
+    <script>
       if (localStorage.theme === 'dark' ||
           (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -24,7 +29,7 @@
         <div class="items-center mb-8 ">
         <!-- Header -->
         <div class="text-center  mb-8">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">Sistem Pembayaran Coffe</h1>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Sistem Pembayaran Coffee</h1>
             <p class="text-gray-600">Kelola transaksi dan pembayaran dengan mudah</p>
         </div>
         <img src="global_institute.png" class="absolute top-0 left-0 w-32 h-auto  mb-4">
